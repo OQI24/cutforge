@@ -22,24 +22,24 @@ export function renderScenarioFrame(project: ProjectMeta, scenario: ScenarioMeta
       <div class="reader-shell" id="reader-shell">
         <div class="reader-resize reader-resize--left" data-resize="left" title="Ширина" aria-hidden="true"></div>
         <div class="reader-resize reader-resize--right" data-resize="right" title="Ширина" aria-hidden="true"></div>
-        <div class="reader-actions">
-          <button
-            type="button"
-            class="icon-btn"
-            data-action="download"
-            title="Скачать MD"
-            aria-label="Скачать MD"
-          >${iconDownload}</button>
-          <button
-            type="button"
-            class="icon-btn"
-            data-action="expand"
-            title="На весь экран"
-            aria-label="На весь экран"
-            aria-pressed="false"
-          >${iconExpand}</button>
-        </div>
         <div class="reader">
+          <div class="reader-actions">
+            <button
+              type="button"
+              class="icon-btn"
+              data-action="download"
+              title="Скачать MD"
+              aria-label="Скачать MD"
+            >${iconDownload}</button>
+            <button
+              type="button"
+              class="icon-btn"
+              data-action="expand"
+              title="На весь экран"
+              aria-label="На весь экран"
+              aria-pressed="false"
+            >${iconExpand}</button>
+          </div>
           <div id="milkdown-root" class="loading">Загрузка…</div>
         </div>
       </div>

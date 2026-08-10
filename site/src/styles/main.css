@@ -360,28 +360,25 @@ body.is-resizing-reader .reader-resize::after {
   right: -2px;
 }
 
-.reader-actions {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  z-index: 5;
-  display: flex;
-  gap: 0.5rem;
-}
-
-.reader-shell--expanded .reader-actions {
-  top: 1.25rem;
-  right: 1.25rem;
-}
-
 .reader {
+  --reader-action-inset: 14px;
+  position: relative;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 12px;
   min-height: 70vh;
-  padding: 3.25rem 1rem 2rem;
+  padding: calc(var(--reader-action-inset) + 2.5rem) 1rem 2rem;
   box-shadow: var(--shadow);
   overflow-x: auto;
+}
+
+.reader-actions {
+  position: absolute;
+  top: var(--reader-action-inset);
+  right: var(--reader-action-inset);
+  z-index: 5;
+  display: flex;
+  gap: 0.5rem;
 }
 
 .reader .milkdown .ProseMirror,
