@@ -1,0 +1,21 @@
+{
+  "name": "cutforge-pages",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "predev": "node scripts/generate-content.mjs",
+    "dev": "vite",
+    "prebuild": "node scripts/generate-content.mjs",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "content": "node scripts/generate-content.mjs"
+  },
+  "dependencies": {
+    "@milkdown/crepe": "^7.22.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2",
+    "vite": "^6.3.5"
+  }
+}

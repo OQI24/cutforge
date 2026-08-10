@@ -23,6 +23,8 @@ venv/
 
 # Node
 node_modules/
+site/dist/
+site/public/content/
 
 # Media (keep out of git by default)
 *.mp4

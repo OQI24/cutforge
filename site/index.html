@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Сценарии проектов cutforge" />
+    <meta name="color-scheme" content="light dark" />
+    <title>cutforge — сценарии</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/style.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-mono/style.min.css" />
+    <script>
+      (() => {
+        const stored = localStorage.getItem('cutforge-theme')
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+        const theme = stored === 'light' || stored === 'dark' ? stored : systemDark ? 'dark' : 'light'
+        document.documentElement.dataset.theme = theme
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,5 +1,11 @@
 # cutforge
 
+**Сценарии:** [https://oqi24.github.io/cutforge/](https://oqi24.github.io/cutforge/)
+
+Открыл ссылку — проекты и сценарии в браузере. По репозиторию лазить не нужно.
+
+---
+
 Репозиторий-гайдлайн для командной работы над монтажом: общая структура проектов, обмен нарезками, правила и (по желанию) автоматизация через AI-агента.
 
 **Главная идея:** новый монтажёр клонирует репо и может работать **вручную** — одинаково на macOS и Windows. Агент и скиллы не обязательное условие.
@@ -16,6 +22,7 @@ cutforge/
     project-layout.md  # как устроен живой проект, как его создать
   projects/            # только живые проекты (без _template)
     toyota-4runner/    # пример
+  site/                # статический просмотр сценариев (Milkdown → GitHub Pages)
   davinci/
     presets/
     templates/
@@ -295,8 +302,25 @@ npx davinci-resolve-mcp setup
 
 ---
 
+## 8. Просмотр сценариев на GitHub Pages
+
+Сайт: [https://oqi24.github.io/cutforge/](https://oqi24.github.io/cutforge/) (ссылка ещё в шапке README).
+
+Статика в `site/`. На каждый push в `main` CI сканирует `projects/*/scenarios/*.md`, собирает оглавление и выкладывает Pages. Добавил папку/файл → после пуша появится само. Файлы-источники не меняются.
+
+Локально:
+
+```bash
+cd site
+npm install
+npm run dev
+```
+
+---
+
 ## Полезные ссылки
 
+- **Сценарии (GitHub Pages):** [https://oqi24.github.io/cutforge/](https://oqi24.github.io/cutforge/)
 - DaVinci Resolve **Studio**: [https://www.blackmagicdesign.com/products/davinciresolve](https://www.blackmagicdesign.com/products/davinciresolve) (полная версия, не Free)  
 - Resolve MCP: [https://github.com/samuelgursky/davinci-resolve-mcp](https://github.com/samuelgursky/davinci-resolve-mcp)  
 - Git: [https://git-scm.com/](https://git-scm.com/)  
