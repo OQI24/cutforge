@@ -111,10 +111,9 @@ async function render() {
       }
 
       setDocumentTitle([scenario.title, project.title])
-      ensureFloatingTheme(false)
+      ensureFloatingTheme(true)
       app.innerHTML = renderScenarioFrame(project, scenario)
       cleanupReader = bindReaderChrome(app)
-      wireThemeToggle(app.querySelector('#theme-toggle'))
 
       const milkRoot = document.querySelector<HTMLElement>('#milkdown-root')
       const downloadBtn = document.querySelector<HTMLButtonElement>('[data-action="download"]')
