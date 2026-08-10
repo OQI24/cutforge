@@ -311,10 +311,6 @@ body.reader-expanded {
   overflow: hidden;
 }
 
-body.reader-expanded .theme-fab {
-  z-index: 55;
-}
-
 body.is-resizing-reader {
   cursor: col-resize;
   user-select: none;
@@ -369,12 +365,17 @@ body.is-resizing-reader .reader-resize::after {
   gap: 0.4rem;
 }
 
+.reader-shell--expanded .reader-actions {
+  top: 0.85rem;
+  right: 0.85rem;
+}
+
 .reader {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 12px;
   min-height: 70vh;
-  padding: 0.5rem 0.5rem 2rem;
+  padding: 3rem 0.75rem 2rem;
   box-shadow: var(--shadow);
   overflow-x: auto;
 }

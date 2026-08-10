@@ -4,13 +4,17 @@ import {
   iconCompress,
   iconDownload,
   iconExpand,
+  iconMoon,
+  iconSun,
   renderPage,
 } from '../components/shell'
 import { hrefHome, hrefProject } from '../lib/router'
+import { currentTheme } from '../lib/theme'
 
 const WIDTH_KEY = 'cutforge-reader-width'
 
 export function renderScenarioFrame(project: ProjectMeta, scenario: ScenarioMeta): string {
+  const dark = currentTheme() === 'dark'
   return renderPage({
     scenario: true,
     crumbs: [
@@ -38,6 +42,13 @@ export function renderScenarioFrame(project: ProjectMeta, scenario: ScenarioMeta
             aria-label="На весь экран"
             aria-pressed="false"
           >${iconExpand}</button>
+          <button
+            type="button"
+            class="icon-btn"
+            id="theme-toggle"
+            title="${dark ? 'Светлая тема' : 'Тёмная тема'}"
+            aria-label="${dark ? 'Светлая тема' : 'Тёмная тема'}"
+          >${dark ? iconSun : iconMoon}</button>
         </div>
         <div class="reader">
           <div id="milkdown-root" class="loading">Загрузка…</div>
