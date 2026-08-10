@@ -1,0 +1,25 @@
+---
+description: RU-segment defaults — Russian speech priority, local platforms, language of agent replies
+alwaysApply: true
+---
+
+# RU-segment
+
+Target context for cutforge work: русскоязычный сегмент (RU / СНГ), YouTube, Reels, Shorts, VK Клипы.
+
+## Speech / transcription
+
+- Prefer **Russian** as the primary language for speech recognition, transcripts, and cue reading.
+- If audio is mixed, prioritize Russian dialogue over other languages unless the user says otherwise.
+- Keep natural RU slang and spoken rhythm in scenario/sense lines — do not “clean” into formal translationese.
+
+## Agent language
+
+- Reply to the user in **Russian** unless they write in another language.
+- Resolve UI labels in docs may stay as in the app (Timeline, Media Pool); bin names may be Russian when the active skill says so.
+- Timeline names for reels stay per project convention: `Reel NN - ShortLabel` (Latin/translit short label).
+
+## Platforms
+
+- Default short-form assumptions: vertical 9:16 when making reels/shorts/clips.
+- Do not auto-generate Instagram captions or hashtag blocks unless asked.

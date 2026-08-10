@@ -1,0 +1,21 @@
+---
+description: Always check knowledge + skills before ad-hoc work
+alwaysApply: true
+---
+
+# Knowledge + skills first
+
+Before doing substantive work from your own initiative:
+
+1. **Knowledge** — open `knowledge/README.md`, then any linked article that matches the task (at least `knowledge/project-layout.md` when creating/changing project folders).
+2. **Skills** — scan `.cursor/skills/*/SKILL.md`, personal `~/.cursor/skills/`, and user-attached skills.
+3. **Match** the request to a skill by description/triggers.
+4. **Read and follow** that `SKILL.md` (and its refs) end-to-end.
+5. Only if **no skill fits** — careful ad-hoc approach; say briefly that no skill applied.
+
+Do not reinvent workflows already in knowledge/skills (project tree, DRT paths, reel shot lists, locks, disk safety).  
+Order when several apply: knowledge layout → `raw-media-sort` → `reels-workflow` → `timeline-drt-share`.
+
+`projects/` contains **live projects only** (no `_template`). New project folders are created per `knowledge/project-layout.md`.
+
+Root folder `skills/` is a pointer only — Cursor loads `.cursor/skills/`.

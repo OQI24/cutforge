@@ -1,0 +1,67 @@
+---
+description: cutforge project layout, naming, locks, and Resolve media-pool conventions for reel work
+alwaysApply: true
+---
+
+# cutforge conventions
+
+Canonical layout write-up: `knowledge/project-layout.md` (read it when creating projects).
+
+## Repo layout
+
+```
+cutforge/
+  knowledge/                 # team knowledge base (agents must consult)
+  .cursor/skills/            # Cursor Agent Skills
+  .cursor/rules/             # always-on project rules
+  davinci/presets|templates  # shared Resolve assets
+  projects/<live-name>/      # live projects only — no _template
+    scenarios/
+    timelines/               # .drt handoff
+    configs/
+    notes/                   # MEDIA.md, LOCKS.md
+  skills/                    # pointer README → .cursor/skills/
+```
+
+- New project: follow `knowledge/project-layout.md` (mkdir tree + MEDIA/LOCKS). Do not invent a parallel structure.
+- Do **not** commit source media, renders, Resolve cache, `.dra`, or local DB media.
+- Scenario files may live next to source media outside git; keep paths in `notes/MEDIA.md`.
+
+## Team timeline handoff
+
+- Exchange cuts via **`.drt` only** → `projects/<name>/timelines/<slug>.drt`.
+- Do not use FCPXML/AAF/EDL for normal cutforge collaboration (debug/external only).
+- Skill: `.cursor/skills/timeline-drt-share/`. Draft commit messages — commit only when asked.
+- After import: check offline clips; relink with user confirmation.
+
+## Source media safety (disk)
+
+- **Never** move, rename, overwrite, delete, or recompress source files on disk.
+- Organize only inside DaVinci Resolve (bins, timelines, markers) via API/MCP.
+- Import/relink only when the user asks; still do not alter originals.
+- Proxies/renders/exports → only into paths the user names.
+
+## Resolve media pool
+
+- Sources: `Master/video` (or equivalent).
+- Timelines: **only** in `Master/timelines`.
+- After creating a timeline, move its pool item into `timelines` if needed.
+
+## Timeline naming
+
+```
+Reel NN - ShortLabel
+```
+
+Examples: `Reel 01 - Zachem hybrid`, `Reel 02 - Factory ARB`.
+
+## Lock protocol
+
+- Locked timelines: rename only if asked; never rebuild content.
+- Experimental timelines may be deleted/rebuilt.
+- Check `projects/<name>/notes/LOCKS.md`.
+
+## Language / scope
+
+- Talk to the user in Russian unless they switch.
+- Theme-specific plot stays in `projects/<name>/`; knowledge/skills stay generic.
