@@ -1,11 +1,5 @@
 # cutforge
 
-**Сценарии:** [https://oqi24.github.io/cutforge/](https://oqi24.github.io/cutforge/)
-
-Открыл ссылку — проекты и сценарии в браузере. По репозиторию лазить не нужно.
-
----
-
 Репозиторий-гайдлайн для командной работы над монтажом: общая структура проектов, обмен нарезками, правила и (по желанию) автоматизация через AI-агента.
 
 **Главная идея:** новый монтажёр клонирует репо и может работать **вручную** — одинаково на macOS и Windows. Агент и скиллы не обязательное условие.
@@ -13,6 +7,12 @@
 Целевой контекст команды: русскоязычный сегмент (YouTube / Reels / Shorts / VK Клипы), обмен черновыми нарезками без пересылки исходников в git.
 
 ---
+
+**Сценарии:** [https://oqi24.github.io/cutforge/](https://oqi24.github.io/cutforge/)
+
+---
+
+
 
 ## Что здесь лежит
 
@@ -39,6 +39,8 @@ cutforge/
 
 ---
 
+
+
 ## Быстрый старт
 
 1. Установить Git, **DaVinci Resolve Studio** (полная версия, не Free), (по желанию) Cursor.
@@ -52,6 +54,8 @@ cutforge/
 Дальше — детальная установка и ежедневный цикл.
 
 ---
+
+
 
 ## 1. Инструменты
 
@@ -68,7 +72,11 @@ cutforge/
 
 ---
 
+
+
 ## 2. Установка с нуля
+
+
 
 ### 2.1. Git
 
@@ -81,6 +89,8 @@ cutforge/
 ```powershell
 git --version
 ```
+
+
 
 ### 2.2. Клон репозитория
 
@@ -106,6 +116,8 @@ cd cutforge
 3. Preferences → General → **External scripting using = Local** (нужно для MCP/агента).
 4. Создать/открыть проект под ролик (имя лучше согласовать с папкой в `projects/`, например `4runner-reels`).
 
+
+
 ### 2.4. ffmpeg (желательно)
 
 **macOS (Homebrew)**
@@ -124,6 +136,8 @@ ffmpeg -version
 ```powershell
 ffmpeg -version
 ```
+
+
 
 ### 2.5. Структура Media Pool в Resolve (договорённость команды)
 
@@ -146,6 +160,8 @@ Reel NN - ShortLabel
 Законченный таймлайн — в `notes/LOCKS.md`; его не пересобирают без договорённости.
 
 ---
+
+
 
 ## 3. Новый проект в cutforge (руками)
 
@@ -203,6 +219,8 @@ projects/<имя-проекта>/timelines/<slug>.drt
 
 1. Закоммитить `.drt` (+ сценарий, если менялся). Медиа не коммитить.
 
+
+
 ### 4.2. Импорт (монтажёр B после `git pull`)
 
 1. `git pull`
@@ -213,6 +231,8 @@ projects/<имя-проекта>/timelines/<slug>.drt
 `.drt` не содержит видеофайлов — только нарезку.
 
 ---
+
+
 
 ## 5. Опционально: AI-агент и автоматизация
 
@@ -252,6 +272,8 @@ npx davinci-resolve-mcp setup
 1. Открыть **Resolve Studio** с проектом; Preferences → General → External scripting using = **Local**.
 2. Подключить MCP в Cursor (Settings → MCP) — сервер обычно называется `davinci-resolve`.
 
+
+
 #### Различия macOS / Windows (пути MCP)
 
 
@@ -259,6 +281,8 @@ npx davinci-resolve-mcp setup
 | ----------------------- | --------------------------------------------------- | --------------------------------------------- |
 | Каталог MCP после setup | `~/Library/Application Support/davinci-resolve-mcp` | `%APPDATA%\davinci-resolve-mcp` (типично)     |
 | Python                  | 3.10+ с python.org, в PATH                          | то же, «Add python.exe to PATH» при установке |
+
+
 
 
 ### 5.3. Когда звать knowledge и скиллы (агент)
@@ -277,6 +301,8 @@ npx davinci-resolve-mcp setup
 
 ---
 
+
+
 ## 6. Договорённости команды (кратко)
 
 1. Один ролик / серия = одна **живая** папка в `projects/` (без `_template`).
@@ -288,6 +314,8 @@ npx davinci-resolve-mcp setup
 7. Ручной пайплайн — источник правды; агент повторяет те же пути и форматы.
 
 ---
+
+
 
 ## 7. Пример: `projects/toyota-4runner`
 
@@ -301,6 +329,8 @@ npx davinci-resolve-mcp setup
 Новый человек: `git pull` → импорт нужного `.drt` → relink на свой путь к `4Raner.mp4`.
 
 ---
+
+
 
 ## 8. Просмотр сценариев на GitHub Pages
 
@@ -317,6 +347,8 @@ npm run dev
 ```
 
 ---
+
+
 
 ## Полезные ссылки
 
