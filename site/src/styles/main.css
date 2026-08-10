@@ -117,8 +117,6 @@ code {
 .home__head {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
   flex-shrink: 0;
 }
 

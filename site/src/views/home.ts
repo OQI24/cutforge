@@ -1,7 +1,6 @@
 import type { Manifest } from '../types'
-import { escapeHtml, iconMoon, iconSun, renderPage } from '../components/shell'
+import { escapeHtml, renderPage } from '../components/shell'
 import { hrefProject } from '../lib/router'
-import { currentTheme } from '../lib/theme'
 
 function pluralFiles(n: number): string {
   const mod10 = n % 10
@@ -12,7 +11,6 @@ function pluralFiles(n: number): string {
 }
 
 export function renderHome(manifest: Manifest): string {
-  const dark = currentTheme() === 'dark'
   const cards =
     manifest.projects.length === 0
       ? `<div class="empty">В <code>projects/</code> пока нет проектов со сценариями.</div>`
@@ -32,13 +30,6 @@ export function renderHome(manifest: Manifest): string {
       <div class="home">
         <div class="home__head">
           <h1 class="page-title page-title--flush">Сценарии</h1>
-          <button
-            type="button"
-            id="theme-toggle"
-            class="icon-btn"
-            title="${dark ? 'Светлая тема' : 'Тёмная тема'}"
-            aria-label="${dark ? 'Светлая тема' : 'Тёмная тема'}"
-          >${dark ? iconSun : iconMoon}</button>
         </div>
         <label class="home__search">
           <span class="visually-hidden">Поиск проекта</span>

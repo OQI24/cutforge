@@ -79,9 +79,8 @@ async function render() {
 
     if (route.name === 'home') {
       setDocumentTitle(['Сценарии'])
-      ensureFloatingTheme(false)
+      ensureFloatingTheme(true)
       app.innerHTML = renderHome(manifest)
-      wireThemeToggle(app.querySelector('#theme-toggle'))
       bindHomeSearch(app)
       return
     }
