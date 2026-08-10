@@ -26,12 +26,14 @@ export function renderPage(options: {
   body: string
   wide?: boolean
   home?: boolean
+  scenario?: boolean
 }): string {
   const crumbs = options.crumbs?.length ? renderCrumbs(options.crumbs) : ''
   const classes = [
     'page',
     options.wide ? 'page--wide' : '',
     options.home ? 'page--home' : '',
+    options.scenario ? 'page--scenario' : '',
   ]
     .filter(Boolean)
     .join(' ')
@@ -43,3 +45,8 @@ export const iconSun = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColo
 export const iconMoon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M21 14.5A8.5 8.5 0 1 1 9.5 3a7 7 0 0 0 11.5 11.5Z"/></svg>`
 
 export const iconDownload = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>`
+
+export const iconExpand = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M9 3H3v6"/><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M15 21h6v-6"/><path d="M3 9 9 3"/><path d="m21 9-6-6"/><path d="m3 15 6 6"/><path d="m21 15-6 6"/></svg>`
+
+export const iconCompress = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M9 3v6H3"/><path d="M15 3v6h6"/><path d="M9 21v-6H3"/><path d="M15 21v-6h6"/><path d="m3 9 6-6"/><path d="m21 9-6-6"/><path d="m3 15 6 6"/><path d="m21 15-6 6"/></svg>`
+

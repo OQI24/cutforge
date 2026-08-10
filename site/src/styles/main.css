@@ -92,6 +92,12 @@ code {
   max-width: 64rem;
 }
 
+.page--scenario {
+  max-width: none;
+  width: 100%;
+  padding-inline: 0.75rem;
+}
+
 .page--home {
   height: 100dvh;
   padding-bottom: var(--page-pad-y);
@@ -268,8 +274,99 @@ code {
   letter-spacing: -0.01em;
 }
 
-.reader-wrap {
+.reader-shell {
+  --reader-width: 92rem;
   position: relative;
+  width: min(var(--reader-width), calc(100vw - 1.5rem));
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+.reader-shell--expanded {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0.75rem;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.reader-shell--expanded .reader {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  border-radius: 10px;
+}
+
+.reader-shell--expanded .reader-resize {
+  display: none;
+}
+
+body.reader-expanded {
+  overflow: hidden;
+}
+
+body.reader-expanded .theme-fab {
+  z-index: 55;
+}
+
+body.is-resizing-reader {
+  cursor: col-resize;
+  user-select: none;
+}
+
+.reader-resize {
+  position: absolute;
+  top: 0.75rem;
+  bottom: 0.75rem;
+  width: 8px;
+  z-index: 4;
+  cursor: col-resize;
+  border-radius: 999px;
+  background: transparent;
+  touch-action: none;
+}
+
+.reader-resize::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3px;
+  height: 2.5rem;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: var(--line);
+  opacity: 0;
+  transition: opacity 120ms var(--ease);
+}
+
+.reader-shell:hover .reader-resize::after,
+.reader-resize:hover::after,
+body.is-resizing-reader .reader-resize::after {
+  opacity: 1;
+}
+
+.reader-resize--left {
+  left: -2px;
+}
+
+.reader-resize--right {
+  right: -2px;
+}
+
+.reader-actions {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 5;
+  display: flex;
+  gap: 0.4rem;
 }
 
 .reader {
@@ -277,8 +374,19 @@ code {
   border: 1px solid var(--line);
   border-radius: 12px;
   min-height: 70vh;
-  padding: 0.5rem 0.25rem 2rem;
+  padding: 0.5rem 0.5rem 2rem;
   box-shadow: var(--shadow);
+  overflow-x: auto;
+}
+
+.reader .milkdown .ProseMirror,
+.reader .milkdown .editor {
+  overflow-x: auto;
+}
+
+.reader .milkdown table {
+  width: max-content;
+  min-width: 100%;
 }
 
 .icon-btn {
@@ -303,13 +411,6 @@ code {
 .icon-btn svg {
   width: 1.05rem;
   height: 1.05rem;
-}
-
-.download-fab {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  z-index: 5;
 }
 
 .theme-fab {

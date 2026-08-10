@@ -10,7 +10,7 @@ import { mountCrepe, type ViewerHandle } from './lib/milkdown-lazy'
 import { currentTheme, initTheme, toggleTheme } from './lib/theme'
 import { bindHomeSearch, renderHome } from './views/home'
 import { renderProject } from './views/project'
-import { downloadMarkdown, renderScenarioFrame } from './views/scenario'
+import { bindReaderChrome, downloadMarkdown, renderScenarioFrame } from './views/scenario'
 import { escapeHtml, iconMoon, iconSun, renderPage } from './components/shell'
 
 const rootEl = document.querySelector<HTMLDivElement>('#app')
@@ -18,10 +18,13 @@ if (!rootEl) throw new Error('#app missing')
 const app: HTMLDivElement = rootEl
 
 let viewer: ViewerHandle | null = null
+let cleanupReader: (() => void) | null = null
 
 initTheme()
 
 async function destroyViewer() {
+  cleanupReader?.()
+  cleanupReader = null
   if (viewer) {
     await viewer.destroy()
     viewer = null
@@ -110,6 +113,7 @@ async function render() {
       setDocumentTitle([scenario.title, project.title])
       ensureFloatingTheme(true)
       app.innerHTML = renderScenarioFrame(project, scenario)
+      cleanupReader = bindReaderChrome(app)
 
       const milkRoot = document.querySelector<HTMLElement>('#milkdown-root')
       const downloadBtn = document.querySelector<HTMLButtonElement>('[data-action="download"]')
