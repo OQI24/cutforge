@@ -3,12 +3,10 @@ name: Deploy GitHub Pages
 on:
   push:
     branches: [main]
+    # за какими файлами следить
     paths:
-      # Сайт и его зависимости
       - 'site/**'
-      # Контент, из которого собирается оглавление
       - 'projects/**/scenarios/**'
-      # Сам workflow — иначе правки фильтра не проверятся
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
