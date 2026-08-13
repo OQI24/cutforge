@@ -9,6 +9,7 @@ import {
 import { hrefHome, hrefProject } from '../lib/router'
 
 const WIDTH_KEY = 'cutforge-reader-width'
+const NARROW_MQ = '(max-width: 720px)'
 
 export function renderScenarioFrame(project: ProjectMeta, scenario: ScenarioMeta): string {
   return renderPage({
@@ -57,17 +58,29 @@ export function downloadMarkdown(filename: string, markdown: string): void {
   URL.revokeObjectURL(url)
 }
 
+function isNarrow(): boolean {
+  return window.matchMedia(NARROW_MQ).matches
+}
+
 function defaultWidth(): number {
+  if (isNarrow()) return Math.max(window.innerWidth - 16, 280)
   return Math.min(Math.max(window.innerWidth - 48, 640), 1600)
 }
 
 function clampWidth(px: number): number {
+  if (isNarrow()) {
+    return Math.max(window.innerWidth - 16, 280)
+  }
   const min = 560
   const max = Math.max(window.innerWidth - 24, min)
   return Math.min(Math.max(px, min), max)
 }
 
 function applyWidth(shell: HTMLElement, px: number): void {
+  if (isNarrow()) {
+    shell.style.removeProperty('--reader-width')
+    return
+  }
   const width = clampWidth(px)
   shell.style.setProperty('--reader-width', `${width}px`)
 }
@@ -107,7 +120,7 @@ export function bindReaderChrome(root: HTMLElement): () => void {
   }
 
   const onPointerDown = (e: PointerEvent) => {
-    if (expanded) return
+    if (expanded || isNarrow()) return
     const target = e.target as HTMLElement | null
     const handle = target?.closest<HTMLElement>('[data-resize]')
     if (!handle || !shell.contains(handle)) return
@@ -134,6 +147,7 @@ export function bindReaderChrome(root: HTMLElement): () => void {
     if (!dragSide) return
     dragSide = null
     document.body.classList.remove('is-resizing-reader')
+    if (isNarrow()) return
     const width = shell.getBoundingClientRect().width
     localStorage.setItem(WIDTH_KEY, String(Math.round(width)))
     try {
@@ -145,6 +159,10 @@ export function bindReaderChrome(root: HTMLElement): () => void {
 
   const onResizeWindow = () => {
     if (expanded) return
+    if (isNarrow()) {
+      applyWidth(shell, 0)
+      return
+    }
     const current = shell.getBoundingClientRect().width
     applyWidth(shell, current)
   }
