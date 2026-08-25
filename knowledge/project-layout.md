@@ -17,6 +17,7 @@ projects/<project-name>/
   notes/
     MEDIA.md          # абсолютные пути к исходникам на машине автора
     LOCKS.md          # таймлайны, которые нельзя пересобирать
+    MUSIC.md          # промпт для Epidemic Sound Assistant + выбранные треки
 ```
 
 Имя папки: латиница/kebab-case (`toyota-4runner`, `brand-spring-reels`).
@@ -69,6 +70,27 @@ Reel 01 - …
 Everything else is experimental unless added here.
 ```
 
+**`notes/MUSIC.md`** — промпт для подбора музыки (Epidemic Sound Assistant и аналоги) + таблица выбранных треков. Заводить вместе с проектом, даже если трек ещё не выбран: так не теряется brief.
+
+Шаблон (см. живой пример `projects/ford-mustang-dark-horse/notes/MUSIC.md`):
+
+- заголовок `# Music — Epidemic Sound`
+- пометка **лимит Assistant: ≤1000 символов**
+- один блок **Epidemic Sound Assistant (копировать)** с English-промптом в fenced `text` + факт длины (`NNN / 1000`)
+- таблица **Выбранные треки**: Track | Epidemic URL / ID | Куда в таймлайне | Notes
+
+Как писать brief для Assistant:
+
+- **Жёсткий лимит: 1000 символов** (пробелы и `\n` считаются). Цель: **≤980**, один промпт без «короткой альтернативы».
+- Перед отдачей пользователю **проверить `len(prompt)`** (скрипт/счётчик); если >1000 — сжать, не надеяться на обрезку платформой.
+- **На английском** — так стабильнее отрабатывает Epidemic Sound Assistant.
+- Указать формат и хронометраж (YouTube long-form / Reels 9:16), есть ли постоянный VO.
+- Настроение + энергия + явный **Avoid** (жанры/вокал, которые не нужны).
+- Для роликов с речью: *instrumental / sparse vocals*, *OK under speech*.
+- Треки и WAV в git не коммитить; в таблице — имя, ссылка/ID, куда легло в таймлайне.
+
+Пример заполненного файла: `projects/ford-mustang-dark-horse/notes/MUSIC.md`.
+
 **`timelines/README.md`** (по желанию) — таблица slug → имя таймлайна в Resolve.
 
 Сценарии появляются по мере работы в `scenarios/`.  
@@ -81,7 +103,8 @@ Everything else is experimental unless added here.
 1. Прочитать этот файл.  
 2. Создать дерево как выше (не копировать удалённый `_template`).  
 3. Заполнить `MEDIA.md` / `LOCKS.md` из того, что сказал пользователь.  
-4. Дальше — нужный скилл (`raw-media-sort` → `reels-workflow` → `timeline-drt-share`).
+4. Создать `MUSIC.md`: промпт для Epidemic Sound Assistant по формату/тону серии (даже без выбранного трека).  
+5. Дальше — нужный скилл (`raw-media-sort` → `reels-workflow` → `timeline-drt-share`).
 
 ---
 
