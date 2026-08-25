@@ -14,7 +14,7 @@ Before doing substantive work from your own initiative:
 5. Only if **no skill fits** — careful ad-hoc approach; say briefly that no skill applied.
 
 Do not reinvent workflows already in knowledge/skills (project tree, DRT paths, reel shot lists, locks, disk safety).  
-Order when several apply: knowledge layout → `raw-media-sort` → `reels-workflow` → `timeline-drt-share`.
+Order when several apply: knowledge layout → `raw-media-sort` → `reels-workflow` → `timeline-drt-share` → **`humanizer-ru` (обязателен для русской прозы сценариев/заметок; см. `.cursor/rules/humanizer-ru-required.mdc`)**.
 
 `projects/` contains **live projects only** (no `_template`). New project folders are created per `knowledge/project-layout.md`.
 

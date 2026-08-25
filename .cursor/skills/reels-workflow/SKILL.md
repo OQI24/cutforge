@@ -152,6 +152,18 @@ First pass = source ranges on V1/A1 from the shot list. Overlays, music, titles,
 
 ---
 
+## Russian prose → humanizer-ru (required)
+
+Before showing or committing scenario markdown, run Russian prose through personal skill **`humanizer-ru`**  
+(`~/.cursor/skills/humanizer-ru/skills/humanizer-ru/SKILL.md`). Project rule: `.cursor/rules/humanizer-ru-required.mdc`.
+
+Apply to: Job, Tone, Dramaturgy, Speech/sense wording (keep quote fidelity), Recommendations, narrative README bits.  
+Do **not** rewrite: frame numbers, clip ids, paths, shot-table structure, English music prompts.
+
+Draft → humanizer pass → then Resolve assembly / git. Skipping humanizer is a defect.
+
+---
+
 ## Deliverable to the user
 
 After assembly, report briefly:

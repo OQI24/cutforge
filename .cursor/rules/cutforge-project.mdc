@@ -78,3 +78,4 @@ Examples: `Reel 01 - Zachem hybrid`, `Reel 02 - Factory ARB`.
 
 - Talk to the user in Russian unless they switch.
 - Theme-specific plot stays in `projects/<name>/`; knowledge/skills stay generic.
+- Russian scenario/notes prose: always run **`humanizer-ru`** before delivery (see `.cursor/rules/humanizer-ru-required.mdc`).
