@@ -23,7 +23,9 @@ cutforge/
   skills/                    # pointer README → .cursor/skills/
 ```
 
-- New project: follow `knowledge/project-layout.md` (mkdir tree + MEDIA/LOCKS/MUSIC). Do not invent a parallel structure.
+- New project: follow `knowledge/project-layout.md` (mkdir tree + `project.json` + MEDIA/LOCKS/MUSIC). Do not invent a parallel structure.
+- `project.json` — required: `format` (`reels` | `horizontal`) for Pages badges (**Рилс** / **Горизонт**), `created` (`YYYY-MM-DD`). Set from the job shape immediately.
+
 - `notes/MUSIC.md` — English prompt for Epidemic Sound Assistant (or similar) + chosen track table; create with the project even before a track is picked. Assistant prompt hard limit: **≤1000 characters** (count before delivery; target ≤980).
 - Do **not** commit source media, renders, Resolve cache, `.dra`, or local DB media.
 - Scenario files may live next to source media outside git; keep paths in `notes/MEDIA.md`.

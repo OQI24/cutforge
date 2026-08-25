@@ -1,3 +1,5 @@
+export type ProjectFormat = 'reels' | 'horizontal'
+
 export type ScenarioMeta = {
   id: string
   file: string
@@ -9,6 +11,9 @@ export type ScenarioMeta = {
 export type ProjectMeta = {
   slug: string
   title: string
+  format: ProjectFormat
+  formatLabel: string
+  created: string | null
   scenarioCount: number
   scenarios: ScenarioMeta[]
 }

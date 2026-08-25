@@ -10,6 +10,7 @@
 
 ```text
 projects/<project-name>/
+  project.json        # format: reels|horizontal, created: YYYY-MM-DD (баджи Pages)
   README.md           # что за серия, имя Resolve-проекта, ссылка на MEDIA
   scenarios/          # сценарии, shot lists (start_f / end_f)
   timelines/          # .drt для обмена нарезкой (без медиа)
@@ -21,6 +22,22 @@ projects/<project-name>/
 ```
 
 Имя папки: латиница/kebab-case (`toyota-4runner`, `brand-spring-reels`).
+
+### `project.json` (обязателен для нового проекта)
+
+```json
+{
+  "format": "reels",
+  "created": "2026-08-25"
+}
+```
+
+| Поле | Значения | Зачем |
+|---|---|---|
+| `format` | `reels` \| `horizontal` | бадж на GitHub Pages: **Рилс** / **Горизонт** |
+| `created` | `YYYY-MM-DD` | дата создания проекта в списке |
+
+`format` — от сути работы (вертикальные коротыши vs горизонтальный long-form). Без файла генератор Pages попробует угадать по README, но лучше явный json.
 
 ---
 
@@ -102,9 +119,10 @@ Everything else is experimental unless added here.
 
 1. Прочитать этот файл.  
 2. Создать дерево как выше (не копировать удалённый `_template`).  
-3. Заполнить `MEDIA.md` / `LOCKS.md` из того, что сказал пользователь.  
-4. Создать `MUSIC.md`: промпт для Epidemic Sound Assistant по формату/тону серии (даже без выбранного трека).  
-5. Дальше — нужный скилл (`raw-media-sort` → `reels-workflow` → `timeline-drt-share`).
+3. Сразу положить `project.json`: `format` (`reels` / `horizontal`) + `created` (сегодняшняя дата).  
+4. Заполнить `MEDIA.md` / `LOCKS.md` из того, что сказал пользователь.  
+5. Создать `MUSIC.md`: промпт для Epidemic Sound Assistant по формату/тону серии (даже без выбранного трека).  
+6. Дальше — нужный скилл (`raw-media-sort` → `reels-workflow` → `timeline-drt-share`).
 
 ---
 

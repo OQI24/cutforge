@@ -6,4 +6,4 @@
 2. пишет `public/content/manifest.json` + копирует md
 3. Vite собирает статику
 
-Новый проект = новая папка в `projects/`. Новый сценарий = новый `.md` в `scenarios/`. Пуш в `main` → Pages обновляется. Руками манифест не правят.
+Новый проект = новая папка в `projects/` + `project.json` (`format`: reels/horizontal, `created`: YYYY-MM-DD). Новый сценарий = новый `.md` в `scenarios/`. Пуш в `main` → Pages обновляется. Руками манифест не правят.

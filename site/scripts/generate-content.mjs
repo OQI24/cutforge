@@ -8,6 +8,13 @@ const repoRoot = path.resolve(siteRoot, '..')
 const projectsRoot = path.join(repoRoot, 'projects')
 const outRoot = path.join(siteRoot, 'public', 'content')
 
+/** @typedef {'reels' | 'horizontal'} ProjectFormat */
+
+const FORMAT_LABELS = {
+  reels: 'Рилс',
+  horizontal: 'Горизонт',
+}
+
 function readTitle(md, fallback) {
   const match = md.match(/^#\s+(.+)$/m)
   return match ? match[1].trim() : fallback
@@ -21,6 +28,43 @@ function readProjectTitle(projectDir, slug) {
     if (h1) return h1[1].replace(/\s*—\s*.+$/, '').trim()
   }
   return slug
+}
+
+/**
+ * @param {string} projectDir
+ * @param {string} readmeText
+ * @returns {{ format: ProjectFormat, created: string | null }}
+ */
+function readProjectMeta(projectDir, readmeText) {
+  const metaPath = path.join(projectDir, 'project.json')
+  /** @type {ProjectFormat} */
+  let format = 'reels'
+  /** @type {string | null} */
+  let created = null
+
+  if (fs.existsSync(metaPath)) {
+    try {
+      const raw = JSON.parse(fs.readFileSync(metaPath, 'utf8'))
+      if (raw.format === 'reels' || raw.format === 'horizontal') format = raw.format
+      if (typeof raw.created === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(raw.created)) {
+        created = raw.created
+      }
+    } catch {
+      // fall through to README heuristics
+    }
+  } else if (readmeText) {
+    const lower = readmeText.toLowerCase()
+    if (
+      lower.includes('горизонталь') ||
+      lower.includes('long-form') ||
+      lower.includes('longform') ||
+      /\byoutube\b/.test(lower)
+    ) {
+      format = 'horizontal'
+    }
+  }
+
+  return { format, created }
 }
 
 function ensureCleanDir(dir) {
@@ -42,7 +86,6 @@ function main() {
     .readdirSync(projectsRoot, { withFileTypes: true })
     .filter((d) => d.isDirectory() && !d.name.startsWith('_') && !d.name.startsWith('.'))
     .map((d) => d.name)
-    .sort((a, b) => a.localeCompare(b, 'en'))
 
   const projects = []
 
@@ -51,6 +94,10 @@ function main() {
     const scenariosDir = path.join(projectDir, 'scenarios')
     const outProject = path.join(outRoot, 'projects', slug, 'scenarios')
     fs.mkdirSync(outProject, { recursive: true })
+
+    const readmePath = path.join(projectDir, 'README.md')
+    const readmeText = fs.existsSync(readmePath) ? fs.readFileSync(readmePath, 'utf8') : ''
+    const { format, created } = readProjectMeta(projectDir, readmeText)
 
     const scenarios = []
     if (fs.existsSync(scenariosDir)) {
@@ -81,10 +128,22 @@ function main() {
     projects.push({
       slug,
       title: readProjectTitle(projectDir, slug),
+      format,
+      formatLabel: FORMAT_LABELS[format],
+      created,
       scenarioCount: scenarios.length,
       scenarios,
     })
   }
+
+  projects.sort((a, b) => {
+    if (a.created && b.created && a.created !== b.created) {
+      return a.created < b.created ? 1 : -1
+    }
+    if (a.created && !b.created) return -1
+    if (!a.created && b.created) return 1
+    return a.title.localeCompare(b.title, 'ru')
+  })
 
   const manifest = {
     generatedAt: new Date().toISOString(),

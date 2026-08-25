@@ -1,6 +1,17 @@
-import type { ProjectMeta } from '../types'
+import type { ProjectFormat, ProjectMeta } from '../types'
 import { escapeHtml, renderPage } from '../components/shell'
 import { hrefHome, hrefScenario } from '../lib/router'
+
+function formatDate(iso: string | null): string {
+  if (!iso) return ''
+  const [y, m, d] = iso.split('-')
+  if (!y || !m || !d) return iso
+  return `${d}.${m}.${y}`
+}
+
+function badgeClass(format: ProjectFormat): string {
+  return format === 'horizontal' ? 'badge badge--horizontal' : 'badge badge--reels'
+}
 
 export function renderProject(project: ProjectMeta): string {
   const rows =
@@ -20,13 +31,24 @@ export function renderProject(project: ProjectMeta): string {
             .join('')}
         </ul>`
 
+  const created = formatDate(project.created)
+  const metaBits = [
+    `<span class="${badgeClass(project.format)}">${escapeHtml(project.formatLabel)}</span>`,
+    created ? `<span>${escapeHtml(created)}</span>` : '',
+  ]
+    .filter(Boolean)
+    .join('')
+
   return renderPage({
     crumbs: [
       { label: 'Проекты', href: hrefHome() },
       { label: project.title },
     ],
     body: `
-      <h1 class="page-title">${escapeHtml(project.title)}</h1>
+      <div class="project-heading">
+        <h1 class="page-title page-title--flush">${escapeHtml(project.title)}</h1>
+        <div class="project-heading__meta">${metaBits}</div>
+      </div>
       ${rows}
     `,
   })
