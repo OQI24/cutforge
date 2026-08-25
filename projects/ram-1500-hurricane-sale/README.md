@@ -16,7 +16,7 @@ Source media (outside git): `/Volumes/Samsung-4tb/Media/sources/rt_16082026/hury
 ## Scope анализа
 
 - **Транскрибируем / режем речь:** `camA/` (A-roll, Sony 4K 25 fps).
-- **Камера B:** `camB/` — телефон, второй угол той же речи (не продукт). В пуле лежит как подсъёмка.
+- **Камера B:** `camB/` — вторая камера, тот же стендап (не продукт). В пуле лежит как подсъёмка.
 - **Продуктовый B-roll машины** в этой папке нет. Крупники / езда — из соседних дампов (`sony/`, `luna/`) только если подтвердят.
 
 Skills: `knowledge/project-layout.md` → `raw-media-sort` → `reels-workflow` → `timeline-drt-share`.

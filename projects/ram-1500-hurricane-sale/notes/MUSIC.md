@@ -26,7 +26,7 @@ Mid-uptempo. Short drop on "best offer in the country" and on the CTA close.
 
 | Track | Artist | ID | BPM | Куда | Notes |
 |---|---|---|---|---|---|
-| Campaign | Dylan Sitts | `e7d120ea-eabe-4e58-b3ed-dc8cf1958f38` | 137 | bed / A2 | dark trap, instrumental; основной bed черновика |
+| Campaign | Dylan Sitts | `e7d120ea-eabe-4e58-b3ed-dc8cf1958f38` | 137 | **не на таймлайне** | скачан; в чистовой рекламной нарезке музыки нет |
 | SHOWTIME | Cushy | `508a4d5d-f48f-40ea-bd0f-ccdb895f238f` | 148 | alt punch | запасной, не на таймлайне |
 
 ## Скачанные SFX

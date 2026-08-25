@@ -19,11 +19,12 @@ cutforge/
     scenarios/
     timelines/               # .drt handoff
     configs/
-    notes/                   # MEDIA.md, LOCKS.md
+    notes/                   # MEDIA.md, LOCKS.md, MUSIC.md
   skills/                    # pointer README → .cursor/skills/
 ```
 
-- New project: follow `knowledge/project-layout.md` (mkdir tree + MEDIA/LOCKS). Do not invent a parallel structure.
+- New project: follow `knowledge/project-layout.md` (mkdir tree + MEDIA/LOCKS/MUSIC). Do not invent a parallel structure.
+- `notes/MUSIC.md` — English prompt for Epidemic Sound Assistant (or similar) + chosen track table; create with the project even before a track is picked. Assistant prompt hard limit: **≤1000 characters** (count before delivery; target ≤980).
 - Do **not** commit source media, renders, Resolve cache, `.dra`, or local DB media.
 - Scenario files may live next to source media outside git; keep paths in `notes/MEDIA.md`.
 
@@ -33,6 +34,18 @@ cutforge/
 - Do not use FCPXML/AAF/EDL for normal cutforge collaboration (debug/external only).
 - Skill: `.cursor/skills/timeline-drt-share/`. Draft commit messages — commit only when asked.
 - After import: check offline clips; relink with user confirmation.
+
+## Media root boundary (HARD)
+
+Когда пользователь даёт **корень папки** с материалами (путь к проекту/съёмке/источникам):
+
+- Работать **только** внутри этого корня и глубже.
+- **Запрещено** подниматься выше корня (`..`, parent), заходить в соседние папки того же уровня, лезть в `sony/`, общий `rt_…/`, другие проекты и любые пути вне указанного корня.
+- Не «угадывать» материалы снаружи, даже если имена клипов похожи или раньше путь был шире.
+- Если чего-то нет внутри корня — сказать об этом, а не расширять область поиска.
+- Правило действует сразу и всегда; пользователь может сузить корень ещё жёстче, но не обязан снова напоминать.
+
+Пример: корень = `…/rt_16082026/ram izumrud` → можно `b-rolls/`, `cam a/`, `cam b/`, `transcribe/`; нельзя `…/rt_16082026/sony` и всё выше `ram izumrud`.
 
 ## Source media safety (disk)
 

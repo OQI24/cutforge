@@ -8,7 +8,7 @@
   - `C1125.MP4` ~38 s — CTA + курс доллара
   - `C1126.MP4` ~58 s — автосалоны / цвета
   - `C1127.MP4` ~32 s — наличие и под заказ
-- B-roll (второй угол речи): `camB/` — 6× телефон `.mp4` (3840×2160, ~29.97 fps)
+- Cam B: `camB/` — 6× `.mp4` (3840×2160, ~29.97 fps), вторая камера того же стендапа, не телефон
 - Transcripts (Buzz): `transcribes/camA/`, `transcribes/camB/` — `.srt` + `.txt` (2026-08-18)
 - Music: `Music/Epidemic/` — WAV, см. `notes/MUSIC.md`
 - SFX: `SFX/Epidemic/`

@@ -11,6 +11,7 @@ Source media (outside git): `/Volumes/Samsung-4tb/Media/sources/FM Dark Horse`
 | `timelines/` | `.drt` для handoff (когда появится) |
 | `notes/MEDIA.md` | пути к исходникам |
 | `notes/LOCKS.md` | залоченные таймлайны |
+| `notes/MUSIC.md` | промпт Epidemic Sound Assistant + выбранные треки |
 
 ## Scope анализа
 
