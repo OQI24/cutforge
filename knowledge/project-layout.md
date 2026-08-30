@@ -10,7 +10,7 @@
 
 ```text
 projects/<project-name>/
-  project.json        # format: reels|horizontal, created: YYYY-MM-DD (баджи Pages)
+  project.json        # format: reels|horizontal, created: YYYY-MM-DD — дата съёмки исходников (баджи Pages)
   README.md           # что за серия, имя Resolve-проекта, ссылка на MEDIA
   scenarios/          # сценарии, shot lists (start_f / end_f)
   timelines/          # .drt для обмена нарезкой (без медиа)
@@ -28,14 +28,14 @@ projects/<project-name>/
 ```json
 {
   "format": "reels",
-  "created": "2026-08-25"
+  "created": "2026-08-15"
 }
 ```
 
 | Поле | Значения | Зачем |
 |---|---|---|
 | `format` | `reels` \| `horizontal` | бадж на GitHub Pages: **Рилс** / **Горизонт** |
-| `created` | `YYYY-MM-DD` | дата создания проекта в списке |
+| `created` | `YYYY-MM-DD` | дата самого раннего исходника, который пошёл в проект (не день сценария) |
 
 `format` — от сути работы (вертикальные коротыши vs горизонтальный long-form). Без файла генератор Pages попробует угадать по README, но лучше явный json.
 
@@ -119,7 +119,7 @@ Everything else is experimental unless added here.
 
 1. Прочитать этот файл.  
 2. Создать дерево как выше (не копировать удалённый `_template`).  
-3. Сразу положить `project.json`: `format` (`reels` / `horizontal`) + `created` (сегодняшняя дата).  
+3. Сразу положить `project.json`: `format` (`reels` / `horizontal`) + `created` (дата самого раннего исходника в проекте, `YYYY-MM-DD`).  
 4. Заполнить `MEDIA.md` / `LOCKS.md` из того, что сказал пользователь.  
 5. Создать `MUSIC.md`: промпт для Epidemic Sound Assistant по формату/тону серии (даже без выбранного трека).  
 6. Дальше — нужный скилл (`raw-media-sort` → `reels-workflow` → `timeline-drt-share`).
